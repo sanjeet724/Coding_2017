@@ -12,7 +12,7 @@ public class LinkedListSol {
 		int data;
 		Node next;
 		
-		private Node(int n) {
+		public Node(int n) {
 			this.data = n;
 			this.next = null;
 		}
@@ -110,6 +110,39 @@ public class LinkedListSol {
 			runner = runner.next;
 		}
 		return curNode.data;
+	}
+	
+	// helper function for question 3
+	// get kth node from head
+	private Node getRandomNode(int k) {
+		if (k <=0 || k > this.size) {
+			return null;
+		}
+		Node curNode = head;
+		for (int i = 0; i < k-1; i++) {
+			curNode = curNode.next;
+		}
+		if (curNode != null) {
+			return curNode;
+		}
+		return null;
+	}
+	
+	// question 3 - delete a node given access to that node only
+	public void deleteSomeNode(int n) {
+		Node nodetoDelete = this.getRandomNode(n);
+		if (nodetoDelete == null || nodetoDelete.next == null) { 
+			System.out.println("Cannot delete");
+			return;
+		}
+		Node next = nodetoDelete.next;
+		nodetoDelete.data = next.data;
+		nodetoDelete.next = next.next;
+		if (n==1) {
+			this.head = next;
+		}
+		System.out.println(n +"th node deleted");
+		return;
 	}
 	
 }
