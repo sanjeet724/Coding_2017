@@ -92,4 +92,24 @@ public class LinkedListSol {
 		}
 	}
 	
+	// question 2 - kth last element from end
+	public int findKthNodefromLast(int k) {
+		if (k <=0) { 
+			return 	-99;
+		}
+		Node curNode = head;
+		Node runner = curNode;
+		for (int i = 0; i < k-1; i++) {
+			runner = runner.next;
+		}
+		if (runner == null) {
+			return -99;
+		}
+		while (runner.next != null) {
+			curNode = curNode.next;
+			runner = runner.next;
+		}
+		return curNode.data;
+	}
+	
 }

@@ -15,9 +15,14 @@ public class LinkedListSolDriver {
 		}
 		scanner.close();
 		myList.printList();
-		//myList.removeDups();
+		/* question 1
+		myList.removeDups();
 		myList.removeDupsRunner();
-		myList.printList();
+		myList.printList(); */
+		int k = 7;
+		int kth = myList.findKthNodefromLast(k);
+		System.out.println(k +"th element from end is: " + kth);
+		
 	}
 
 }
