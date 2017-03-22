@@ -1,4 +1,4 @@
-package chapter2;
+package trials;
 
 // My implementation (to understand the concepts)
 

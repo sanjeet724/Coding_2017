@@ -1,10 +1,11 @@
-package chapter2;
+package trials;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 /*
 Practicing linked list
 */
+
 
 public class LinkedListDriver {
 	public static void main(String[] args) throws IOException {
