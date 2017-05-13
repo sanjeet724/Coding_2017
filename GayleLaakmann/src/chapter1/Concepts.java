@@ -7,7 +7,12 @@ public class Concepts {
 	public static void main(String[] args) {
 		//NumericValueTest();
 		//StringValueofTest();
-		StringArrayTest();
+		//StringArrayTest();
+		numericTest();
+	}
+	
+	public static void numericTest() {
+		System.out.println(4%5);
 	}
 	
 	// Numeric values returns same value for a/A through z/Z
