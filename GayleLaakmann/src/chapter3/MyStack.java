@@ -10,12 +10,12 @@ class Node {
 	}
 }
 
-public class Stack {
+public class MyStack {
 	Node top;
 	private int size;
 	
 	// constuctor
-	public Stack() {
+	public MyStack() {
 		top = null;
 		size = 0;
 	}
