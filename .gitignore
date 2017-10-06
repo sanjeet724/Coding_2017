@@ -25,3 +25,11 @@ GayleLaakmann/src/LeetCode_Easy/ReverseWords3.java
 
 GayleLaakmann/src/LeetCode_Easy/HammingDistance.java
 
+
+*.xml
+
+*.iml
+
+Interviews/.classpath
+
+Interviews/.gitignore
