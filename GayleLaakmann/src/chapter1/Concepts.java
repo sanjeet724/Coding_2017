@@ -5,10 +5,10 @@ package chapter1;
 public class Concepts {
 
 	public static void main(String[] args) {
-		//NumericValueTest();
+		NumericValueTest();
 		//StringValueofTest();
 		//StringArrayTest();
-		numericTest();
+		//numericTest();
 	}
 	
 	public static void numericTest() {
@@ -23,6 +23,8 @@ public class Concepts {
 		System.out.println("Numeric Value of z: " + Character.getNumericValue('z'));
 		System.out.println("Numeric Value of Z: " + Character.getNumericValue('Z'));
 		System.out.println("Numeric Value of ' ': " + Character.getNumericValue(' '));
+		System.out.println("Numeric Value of '7': " + Character.getNumericValue('7'));
+		System.out.println("Numeric Value of '0': " + Character.getNumericValue('0'));
 	}
 	
 	public static void StringValueofTest() {
