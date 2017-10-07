@@ -18,9 +18,12 @@ Your function should return :
 
 package dynamicProgramming;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
 
 public class LotteryNumbers {
 
@@ -36,10 +39,19 @@ public class LotteryNumbers {
 				"8927138",
 				"a678213",
 				"as78231",
-				"3423189"
+				"3423189",
+				"49385328947546",
+				"49385322143547",
+				"47385322143547",
+				"493853221435a7",
+				"49385322143527",
+				"49382722143527",
+				"49382722143559",
+				"49382722143560",
+				"-4938272214355",
+				"-12345678"
 				} ;
-		List<String> luckyNumbers = generateLuckyNumbers(numbers);
-		printNumbers(luckyNumbers);
+		generateLuckyNumbers(numbers);
 	}
 	
 	/**
@@ -58,13 +70,13 @@ public class LotteryNumbers {
 	 * @return - A list of the result
 	 */
 	
-	 public static List<String> generateLuckyNumbers(String [] nums) {
+	 public static void generateLuckyNumbers(String [] nums) {
 		 List<String> LuckyList = new ArrayList<String>();
 		 for (String num : nums) {
 			 String lucky = getUniqueNumFromString(num);
 			 LuckyList.add(lucky);
 		 }
-		 return LuckyList;
+		 printNumbers(LuckyList);
 	}
 	 
 	/**
@@ -73,66 +85,103 @@ public class LotteryNumbers {
 	 */
 	public static String getUniqueNumFromString(String num) {
 		int lenOfInput = num.length();		
-		// invalid case
+		// invalid length
 		if (lenOfInput < 7 || lenOfInput > 14) {
-			return num + " -> " + "Hard Luck";
+			return num + " -> " + "Invalid length of the String";
 		} 
-		
-		if (lenOfInput == 7) {
-			return getSingleDigitUniqueNums(num);
-		} else if (lenOfInput == 14) {
-			return getDoubleDigitUniqueNums(num);
-		} else {
-			return getUniqueNums(num);
+		try { 
+		    BigInteger numericValue = new BigInteger(num); 
+		    if (numericValue.compareTo(BigInteger.ZERO) > 0) { // only +ve numbers
+				if (lenOfInput == 7) {
+					return getSingleDigitUniqueNums(num);
+				} else if (lenOfInput == 14) {
+					return getDoubleDigitUniqueNums(num);
+				} else {
+					return getUniqueNums(num);
+				}
+		    } else {
+		    	return num + " -> " + "Invalid Number";
+		    }
+		 } catch(NumberFormatException e) { 
+		    return num + " -> " + "Not a numeric string";
+		 } catch(NullPointerException e) {
+		    return num + " -> " + "Null pointers found";
+		 }
+	}
+	
+	
+	/**
+	 * Helper function to create the result string from a list of unique numbers
+	 * @param uniqueList - the list
+	 * @return - a string or null
+	 */
+	public static String createLuckyNumString(List<String> uniqueList) {
+		if (uniqueList.size() == 7) {
+			StringBuilder result = new StringBuilder();
+			for (String str : uniqueList) {
+				result.append(str);
+				result.append(" ");
+			}
+			return new String(result).trim();
 		}
+		return null;
 	}
 	
 	/**
 	 * Exactly Single Digit
-	 * @param s
-	 * @return
+	 * @param s - the input string
+	 * @return - String containing the 7 unique numbers(all of which are one digit)
+	 * if it satisfies the condition
 	 */
 	public static String getSingleDigitUniqueNums(String s) {
-		HashSet<Character> uniqueSet = new HashSet<Character>(); // to check dups
-		List<Character> res = new ArrayList<Character>(); // to maintain the order
+		HashSet<String> uniqueSet = new HashSet<String>(); // to check duplicates
+		List<String> res = new ArrayList<String>(); // to maintain the order
 		for (int i = 0; i < s.length(); i++) {
-			if (Character.isDigit(s.charAt(i))) { // only if its a digit
-				int numericValue = Character.getNumericValue(s.charAt(i));
-				if (numericValue != 0) {
-					if (!uniqueSet.contains(s.charAt(i))) {
-						uniqueSet.add(s.charAt(i));
-						res.add(s.charAt(i));
-					}
+			int numericValue = Character.getNumericValue(s.charAt(i));
+			if (numericValue != 0) { // cannot be a zero
+				if (!uniqueSet.contains(Character.toString(s.charAt(i)))) {
+					uniqueSet.add(Character.toString(s.charAt(i)));
+					res.add(Character.toString(s.charAt(i)));
 				}
 			}
 		}
-		
-		if (res.size() == 7) {
-			StringBuilder result = new StringBuilder();
-			for (Character c : res) {
-				result.append(c);
-				result.append(" ");
-			}
-			return s + " -> " + new String(result).trim();
-		} else {
-			return s + " -> " + "Hard Luck";
-		}
-		
+		// check if there are 7 unique numbers
+		String result = createLuckyNumString(res);
+		if (result != null) {
+			return s + " -> " + result;
+		} 
+		return s + " -> " + "Hard Luck(7 unique numbers not found)";
 	}
 	
 	/**
 	 * Exactly double digits
-	 * @param s
-	 * @return
+	 * @param s - the input string
+	 * @return - String containing the 7 unique numbers(all of which are 2 digits) 
+	 * if it satisfies the condition
 	 */
 	public static String getDoubleDigitUniqueNums(String s) {
-		return  s + " -> " + "To Do(exactly double digits)";
+		HashSet<String> uniqueSet = new HashSet<String>();
+		List<String> res = new ArrayList<String>();
+		for (int i = 0; i < s.length(); i+=2) {
+			String temp = s.substring(i, i+2); // take 2 digits at a time
+			      int numericValue = Integer.parseInt(temp);  // guranteed to be an int
+			      if (!uniqueSet.contains(temp) && numericValue < 60) {
+			    	  uniqueSet.add(temp);
+			    	  res.add(temp);
+			      }
+		}
+		// check if there are 7 unique numbers
+		String result = createLuckyNumString(res);
+		if (result != null) {
+			return s + " -> " + result;
+		} 
+		return s + " -> " + "Hard Luck(7 unique numbers not found)";
 	}
 	
 	/**
 	 * Mix of single an double digits
-	 * @param s
-	 * @return
+	 * @param s - the input string
+	 * @return String containing the 7 unique numbers if it satisfies the condition
 	 */
 	public static String getUniqueNums(String s) {
 		return s + " -> " + "To Do(Mix of Digits)";
