@@ -114,6 +114,20 @@ public class NumberFromString {
 	 * @return
 	 */
 	private String getMixDigitsNumbers() {
+		String luckyNumString;
+		int doubleDigitNums = this.numStr.length() % 7;
+		HashSet<String> uniqueSet = new HashSet<String>(); // to check duplicates
+		List<String> res = new ArrayList<String>(); // to maintain order
+		for (int i = 0; i < this.numStr.length(); i++) {
+			String temp = Character.toString(this.numStr.charAt(i));
+			int numericValue = Character.getNumericValue(this.numStr.charAt(i));
+			if (numericValue != 0) {
+				 
+			}
+			for (int j = i; j < this.numStr.length(); j++) {
+				
+			}
+		}
 		return "Work in progress";
 	}
 }

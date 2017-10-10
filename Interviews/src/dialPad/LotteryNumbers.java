@@ -15,6 +15,8 @@ Your function should return :
 1234567 -> 1 2 3 4 5 6 7
 */
 
+// initial try
+
 
 package dialPad;
 
@@ -179,7 +181,8 @@ public class LotteryNumbers {
 	/**
 	 * Mix of single an double digits
 	 * @param s - the input string
-	 * @return String containing the 7 unique numbers if it satisfies the condition
+	 * @return String containing the 7 unique numbers if it.
+	 *  satisfies the condition
 	 */
 	public static String getUniqueNums(String s) {
 		return s + " -> " + "To Do(Mix of Digits)";
