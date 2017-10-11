@@ -3,7 +3,7 @@ package dialPad;
 
 import java.util.LinkedHashSet;
 
-public class Trials {
+public class Trial1 {
 
 	public static void main(String[] args) {
 		String num = "4938532894754";
@@ -30,7 +30,7 @@ public class Trials {
 			for (int j = i; j < num.length()-1; j++) {
 				String temp = num.substring(j, j+2);
 				int doubleDigitNumericVal = Integer.parseInt(temp);
-				if (!doubles.contains(temp) && doubleDigitNumericVal < 60) {
+				if (!doubles.contains(temp)) {
 						doubles.add(temp);
 						combo.add(temp);
 				} 
