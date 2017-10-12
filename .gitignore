@@ -16,7 +16,6 @@ GayleLaakmann/.classpath
 
 *.class
 
-.project
 
 GayleLaakmann/src/LeetCode_Easy/
 
@@ -33,3 +32,5 @@ GayleLaakmann/src/LeetCode_Easy/HammingDistance.java
 Interviews/.classpath
 
 Interviews/.gitignore
+
+
