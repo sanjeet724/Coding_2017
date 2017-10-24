@@ -30,6 +30,7 @@ class BSTDriver {
 		 root.printPostOrder();
 		 */
 		 testCase_1();
+		 //testCase_2();
 	}
 	
 	// no right sub-tree
@@ -40,5 +41,13 @@ class BSTDriver {
 			bst.insert(i);
 		}
 		bst.printInOrder();
+	}
+	
+	public static void testCase_2() {
+		int [] inputs = {36,33,45,76,65,89,80,90};
+		Node bst = new Node(49); // root node
+		for (int i : inputs) {
+			bst.insert(i);
+		}
 	}
 }

@@ -16,6 +16,7 @@ See MIT 6.006 Fall 2011 recitation 20
 */
 
 public class LongestSubsequence {
+	
 	static Integer [] input = {8,3,5,2,4,9,7,11};
 	
 	public static void main(String[] args) {
